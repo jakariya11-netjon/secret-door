@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#f7a8bd" />
+    <title>For Ruksyyy ✨ - Waiting Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --pink: #f58aac;
+            --rose: #d96687;
+            --lav: #c9b3ee;
+            --cream: #fff9f5;
+            --ink: #632d43;
+            --glass: rgba(255, 255, 255, .58);
+            --line: rgba(255, 255, 255, .78);
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            background: #f9c7d3;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100dvh;
+            color: var(--ink);
+            font-family: Poppins, system-ui, sans-serif;
+            background: radial-gradient(circle at 12% 7%, #fff6e9 0 8%, transparent 30%), radial-gradient(circle at 88% 20%, #e8d8ff 0 8%, transparent 29%), linear-gradient(145deg, #ffd9df, #f7b5c7 49%, #d7c2f2);
+        }
+
+        body:before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: .42;
+            background-image: radial-gradient(rgba(255, 255, 255, .8) 1px, transparent 1.5px), radial-gradient(rgba(255, 255, 255, .55) 1px, transparent 1.5px);
+            background-size: 31px 31px, 57px 57px;
+            background-position: 0 0, 14px 19px;
+        }
+
+        button {
+            font: inherit;
+            cursor: pointer;
+        }
+
+        .app {
+            width: min(100%, 560px);
+            min-height: 100dvh;
+            margin: auto;
+            position: relative;
+            overflow: hidden;
+            padding: calc(24px + env(safe-area-inset-top)) 18px calc(24px + env(safe-area-inset-bottom));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(2px);
+            opacity: .38;
+            pointer-events: none;
+        }
+
+        .orb.one {
+            width: 220px;
+            height: 220px;
+            background: #ffe99c;
+            top: 15%;
+            left: -100px;
+        }
+
+        .orb.two {
+            width: 200px;
+            height: 200px;
+            background: #b994ea;
+            right: -90px;
+            bottom: 15%;
+        }
+
+        .card {
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            padding: 36px 20px 28px;
+            text-align: center;
+            background: var(--glass);
+            border: 1px solid var(--line);
+            box-shadow: 0 20px 50px rgba(132, 57, 88, .18), inset 0 1px rgba(255, 255, 255, .75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 32px;
+            animation: enter .65s ease both;
+        }
+
+        .heart-icon {
+            font-size: 3.2rem;
+            display: inline-block;
+            margin-bottom: 12px;
+            filter: drop-shadow(0 8px 12px rgba(188, 77, 112, .25));
+            animation: pulse 1.6s ease-in-out infinite;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.6rem;
+            line-height: 1.1;
+            margin: 0 0 10px;
+            color: #a93f66;
+            text-shadow: 0 3px 12px rgba(169, 63, 102, .18);
+        }
+
+        .sub {
+            font-size: .88rem;
+            line-height: 1.6;
+            color: #754055;
+            margin: 0 auto 22px;
+            max-width: 380px;
+        }
+
+        /* Countdown Grid */
+        .countdown {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 22px 0 25px;
+        }
+
+        .time {
+            padding: 14px 4px 11px;
+            background: rgba(255, 255, 255, .72);
+            border: 1px solid rgba(255, 255, 255, .9);
+            border-radius: 18px;
+            box-shadow: 0 8px 18px rgba(132, 57, 88, .08);
+        }
+
+        .time strong {
+            display: block;
+            font-size: 1.55rem;
+            color: #b5456a;
+            line-height: 1.1;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .time span {
+            font-size: .62rem;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: #855368;
+            font-weight: 600;
+        }
+
+        /* Animated Pulse Line */
+        .wait-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, .5);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0 0 26px;
+            position: relative;
+        }
+
+        .wait-bar-inner {
+            height: 100%;
+            width: 45%;
+            background: linear-gradient(90deg, #d7658a, #aa7fd1);
+            border-radius: 10px;
+            position: absolute;
+            animation: loadingBar 2s ease-in-out infinite alternate;
+        }
+
+        .logout-btn {
+            border: 1px solid rgba(184, 73, 112, .35);
+            width: 100%;
+            border-radius: 18px;
+            padding: 14px 16px;
+            font-weight: 600;
+            color: #b84970;
+            background: rgba(255, 255, 255, .45);
+            transition: background .2s, transform .2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .logout-btn:active {
+            transform: scale(.98);
+            background: rgba(255, 255, 255, .7);
+        }
+
+        @keyframes enter {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.12);
+            }
+        }
+
+        @keyframes loadingBar {
+            0% {
+                left: 0%;
+                width: 30%;
+            }
+
+            100% {
+                left: 70%;
+                width: 30%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="app">
+        <div class="orb one"></div>
+        <div class="orb two"></div>
+
+        <section class="card">
+            <span class="heart-icon" aria-hidden="true">💖</span>
+            <h1>Please Wait, Ruksyyy ✨</h1>
+            <p class="sub">Something beautiful is being prepared with all my heart. Just hold tight for a little
+                moment...</p>
+
+            <div class="wait-bar">
+                <div class="wait-bar-inner"></div>
+            </div>
+
+            <!-- Countdown Timer -->
+            <div class="countdown" aria-label="Countdown timer">
+                <div class="time"><strong id="days">00</strong><span>Days</span></div>
+                <div class="time"><strong id="hours">00</strong><span>Hours</span></div>
+                <div class="time"><strong id="minutes">00</strong><span>Mins</span></div>
+                <div class="time"><strong id="seconds">00</strong><span>Secs</span></div>
+            </div>
+
+            <button class="logout-btn" id="logoutBtn">🔒 Lock / Logout</button>
+        </section>
+    </main>
+
+    <script>
+        // Target Date Countdown (September 5)
+        function targetDate() {
+            const now = new Date();
+            return new Date(now.getFullYear(), 8, 5, 0, 0, 0, 0);
+        }
+
+        function tick() {
+            const now = new Date(), target = targetDate();
+            const diff = target > now ? target - now : new Date(now.getFullYear() + 1, 8, 5) - now;
+            const parts = [
+                Math.floor(diff / 86400000),
+                Math.floor(diff / 3600000) % 24,
+                Math.floor(diff / 60000) % 60,
+                Math.floor(diff / 1000) % 60
+            ];
+            ['days', 'hours', 'minutes', 'seconds'].forEach((id, i) => {
+                document.getElementById(id).textContent = String(parts[i]).padStart(2, '0');
+            });
+        }
+
+        tick();
+        setInterval(tick, 1000);
+
+        // Logout Functionality (Redirect to Login)
+        document.getElementById('logoutBtn').addEventListener('click', function () {
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+
+</html>
