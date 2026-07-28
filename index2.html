@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#f7a8bd" />
+    <title>For Ruksyyy ✨ - Celebration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <style>
+        :root {
+            --pink: #f58aac;
+            --rose: #d96687;
+            --lav: #c9b3ee;
+            --cream: #fff9f5;
+            --ink: #632d43;
+            --glass: rgba(255, 255, 255, .56);
+            --line: rgba(255, 255, 255, .74);
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            background: #f9c7d3;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100dvh;
+            color: var(--ink);
+            font-family: Poppins, system-ui, sans-serif;
+            background: radial-gradient(circle at 12% 7%, #fff6e9 0 8%, transparent 30%), radial-gradient(circle at 88% 20%, #e8d8ff 0 8%, transparent 29%), linear-gradient(145deg, #ffd9df, #f7b5c7 49%, #d7c2f2);
+        }
+
+        body:before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: .42;
+            background-image: radial-gradient(rgba(255, 255, 255, .8) 1px, transparent 1.5px), radial-gradient(rgba(255, 255, 255, .55) 1px, transparent 1.5px);
+            background-size: 31px 31px, 57px 57px;
+            background-position: 0 0, 14px 19px;
+        }
+
+        button {
+            font: inherit;
+            cursor: pointer;
+        }
+
+        .app {
+            width: min(100%, 560px);
+            min-height: 100dvh;
+            margin: auto;
+            position: relative;
+            overflow: hidden;
+            padding: calc(24px + env(safe-area-inset-top)) 18px calc(94px + env(safe-area-inset-bottom));
+        }
+
+        .app:before {
+            content: "";
+            position: absolute;
+            width: 240px;
+            height: 240px;
+            top: -90px;
+            right: -110px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, .78), rgba(255, 255, 255, 0) 68%);
+            pointer-events: none;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(2px);
+            opacity: .38;
+            pointer-events: none;
+        }
+
+        .orb.one {
+            width: 210px;
+            height: 210px;
+            background: #ffe99c;
+            top: 25%;
+            left: -120px;
+        }
+
+        .orb.two {
+            width: 190px;
+            height: 190px;
+            background: #b994ea;
+            right: -100px;
+            bottom: 18%;
+        }
+
+        .screen {
+            position: relative;
+            z-index: 1;
+            animation: enter .65s ease both;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .glass {
+            background: var(--glass);
+            border: 1px solid var(--line);
+            box-shadow: 0 20px 50px rgba(132, 57, 88, .18), inset 0 1px rgba(255, 255, 255, .75), inset 0 -1px rgba(170, 100, 140, .08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 28px;
+        }
+
+        h1,
+        h2,
+        p {
+            margin-top: 0;
+        }
+
+        h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            line-height: 1;
+            margin: 34px 0 16px;
+            color: #a93f66;
+        }
+
+        .sub {
+            font-size: .91rem;
+            line-height: 1.7;
+            color: #754055;
+            margin: 0 auto 23px;
+            max-width: 360px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 18px 8px 12px;
+        }
+
+        .hero h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.85rem;
+            margin-bottom: 10px;
+            color: #a93f66;
+            text-shadow: 0 4px 17px rgba(168, 56, 102, .22);
+        }
+
+        .hero .sub {
+            color: #7d3954;
+            background: rgba(255, 255, 255, .35);
+            border: 1px solid rgba(255, 255, 255, .46);
+            border-radius: 18px;
+            padding: 10px 13px;
+        }
+
+        .hearts {
+            height: 34px;
+            position: relative;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 1.25rem;
+            animation: float 3.8s ease-in-out infinite;
+        }
+
+        .heart:nth-child(1) {
+            left: 12%;
+            animation-delay: -.5s
+        }
+
+        .heart:nth-child(2) {
+            left: 30%;
+            animation-delay: -2.2s
+        }
+
+        .heart:nth-child(3) {
+            right: 28%;
+            animation-delay: -1s
+        }
+
+        .heart:nth-child(4) {
+            right: 8%;
+            animation-delay: -3s
+        }
+
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .memory {
+            min-height: 153px;
+            perspective: 900px;
+            border: 0;
+            background: transparent;
+            padding: 0;
+            text-align: left;
+            transform: translateZ(0);
+        }
+
+        .memory:active {
+            transform: scale(.97);
+        }
+
+        .memory-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 153px;
+            transition: transform .6s;
+            transform-style: preserve-3d;
+        }
+
+        .memory.flipped .memory-inner {
+            transform: rotateY(180deg);
+        }
+
+        .memory-face {
+            position: absolute;
+            inset: 0;
+            padding: 17px 13px;
+            border-radius: 22px;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            background: rgba(255, 255, 255, .59);
+            border: 1px solid rgba(255, 255, 255, .78);
+            box-shadow: 0 12px 24px rgba(132, 57, 88, .1);
+            overflow: hidden;
+        }
+
+        .memory-face:before {
+            content: "";
+            position: absolute;
+            top: -40%;
+            left: -50%;
+            width: 50%;
+            height: 180%;
+            transform: rotate(24deg);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .38), transparent);
+            transition: left .7s ease;
+        }
+
+        .memory:hover .memory-face:before,
+        .memory:focus .memory-face:before {
+            left: 120%;
+        }
+
+        .memory-face>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .memory:nth-child(1) .memory-face {
+            background: linear-gradient(145deg, rgba(255, 249, 236, .82), rgba(255, 204, 218, .66))
+        }
+
+        .memory:nth-child(2) .memory-face {
+            background: linear-gradient(145deg, rgba(255, 238, 248, .82), rgba(220, 203, 255, .67))
+        }
+
+        .memory:nth-child(3) .memory-face {
+            background: linear-gradient(145deg, rgba(255, 242, 231, .84), rgba(255, 217, 177, .59))
+        }
+
+        .memory:nth-child(4) .memory-face {
+            background: linear-gradient(145deg, rgba(240, 232, 255, .84), rgba(207, 232, 255, .59))
+        }
+
+        .memory-back {
+            transform: rotateY(180deg);
+            background: linear-gradient(145deg, rgba(255, 247, 235, .9), rgba(237, 215, 255, .8));
+            display: flex;
+            align-items: center;
+        }
+
+        .memory .emoji {
+            font-size: 1.75rem;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .memory b {
+            font-size: .84rem;
+            color: #a64365;
+            display: block;
+            line-height: 1.35;
+        }
+
+        .memory small {
+            display: block;
+            margin-top: 8px;
+            color: #80556a;
+            font-size: .67rem;
+            line-height: 1.45;
+        }
+
+        .memory-back span {
+            font-size: .74rem;
+            line-height: 1.55;
+            color: #7c4058;
+        }
+
+        .accordion {
+            display: grid;
+            gap: 10px;
+        }
+
+        .reason {
+            overflow: hidden;
+            border-radius: 19px;
+            background: rgba(255, 255, 255, .57);
+            border: 1px solid var(--line);
+            box-shadow: 0 7px 16px rgba(128, 52, 83, .07);
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .reason:has(button:active) {
+            transform: scale(.985);
+        }
+
+        .reason.open {
+            background: linear-gradient(115deg, rgba(255, 255, 255, .72), rgba(248, 225, 247, .68));
+            box-shadow: 0 12px 25px rgba(128, 52, 83, .11);
+        }
+
+        .reason button {
+            width: 100%;
+            border: 0;
+            background: transparent;
+            text-align: left;
+            padding: 15px 16px;
+            color: #843c58;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .reason button span:last-child {
+            transition: transform .25s;
+        }
+
+        .reason.open button span:last-child {
+            transform: rotate(45deg);
+        }
+
+        .reason p {
+            max-height: 0;
+            overflow: hidden;
+            margin: 0;
+            padding: 0 16px;
+            font-size: .78rem;
+            line-height: 1.6;
+            color: #74495b;
+            transition: max-height .35s ease, padding .35s ease;
+        }
+
+        .reason.open p {
+            max-height: 120px;
+            padding: 0 16px 15px;
+        }
+
+        .gift {
+            margin-top: 31px;
+            padding: 26px 18px;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, rgba(255, 255, 255, .71), rgba(255, 230, 240, .57));
+        }
+
+        .gift:before {
+            content: "";
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: rgba(207, 178, 245, .28);
+            filter: blur(10px);
+            left: -65px;
+            bottom: -70px;
+        }
+
+        .gift>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .gift .box {
+            font-size: 3.8rem;
+            display: block;
+            animation: bounce 2.5s ease-in-out infinite;
+            filter: drop-shadow(0 8px 8px rgba(164, 63, 95, .22));
+            transform-style: preserve-3d;
+        }
+
+        .gift h2 {
+            margin: 8px 0 9px;
+        }
+
+        .gift p {
+            font-size: .78rem;
+            line-height: 1.55;
+            margin-bottom: 18px;
+            color: #754055;
+        }
+
+        .gift-button {
+            border: 0;
+            border-radius: 18px;
+            font-weight: 600;
+            color: white;
+            width: auto;
+            padding: 13px 23px;
+            background: linear-gradient(105deg, #d65582, #b47bce 52%, #e87499);
+            background-size: 200% auto;
+            transition: transform .2s, box-shadow .2s, background-position .4s;
+            box-shadow: 0 10px 20px rgba(178, 83, 117, .2);
+        }
+
+        .gift-button:hover,
+        .gift-button:focus {
+            background-position: right center;
+            box-shadow: 0 13px 25px rgba(178, 83, 117, .32);
+        }
+
+        .gift-button:active {
+            transform: scale(.98);
+        }
+
+        .player {
+            position: fixed;
+            z-index: 5;
+            bottom: max(12px, env(safe-area-inset-bottom));
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(calc(100% - 32px), 525px);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 13px;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, .75);
+            border: 1px solid rgba(255, 255, 255, .95);
+            box-shadow: 0 12px 30px rgba(123, 49, 77, .2);
+            backdrop-filter: blur(16px);
+        }
+
+        .music-toggle {
+            border: 0;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            color: white;
+            background: linear-gradient(135deg, #e27198, #b990dd);
+            font-size: 1rem;
+            flex: 0 0 auto;
+            box-shadow: 0 5px 12px rgba(185, 77, 116, .25);
+        }
+
+        .track {
+            min-width: 0;
+            flex: 1;
+        }
+
+        .track b {
+            display: block;
+            font-size: .74rem;
+            color: #7b3853;
+        }
+
+        .track span {
+            font-size: .62rem;
+            color: #9c6578;
+        }
+
+        .wave {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            height: 22px;
+        }
+
+        .wave i {
+            display: block;
+            width: 3px;
+            height: 7px;
+            border-radius: 2px;
+            background: #d96b8c;
+        }
+
+        .playing .wave i {
+            animation: wave .7s ease-in-out infinite alternate;
+        }
+
+        .wave i:nth-child(2) {
+            animation-delay: -.3s;
+        }
+
+        .wave i:nth-child(3) {
+            animation-delay: -.6s;
+        }
+
+        .wave i:nth-child(4) {
+            animation-delay: -.15s;
+        }
+
+        .wave i:nth-child(5) {
+            animation-delay: -.45s;
+        }
+
+        .story-page {
+            display: none;
+            animation: enter .45s ease both;
+            min-height: calc(100dvh - 135px);
+            padding: 12px 0 20px;
+            position: relative;
+        }
+
+        .story-page.active {
+            display: block;
+        }
+
+        .story-page:before,
+        .story-page:after {
+            position: absolute;
+            z-index: -1;
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: rgba(255, 255, 255, .42);
+            line-height: 1;
+        }
+
+        .story-page:before {
+            content: '✦';
+            top: 7%;
+            left: 1%;
+            transform: rotate(-16deg);
+        }
+
+        .story-page:after {
+            content: '♡';
+            right: 0;
+            bottom: 9%;
+            transform: rotate(15deg);
+        }
+
+        .story-page h2 {
+            text-align: center;
+            font-size: 2.3rem;
+            text-shadow: 0 3px 11px rgba(170, 64, 104, .16);
+        }
+
+        .story-page h2:after {
+            content: '';
+            display: block;
+            width: 52px;
+            height: 3px;
+            border-radius: 4px;
+            margin: 12px auto 0;
+            background: linear-gradient(90deg, transparent, #d86d91, #b48ad7, transparent);
+        }
+
+        .story-progress {
+            display: flex;
+            justify-content: center;
+            gap: 7px;
+            margin: 0 0 10px;
+        }
+
+        .story-progress i {
+            width: 22px;
+            height: 5px;
+            border-radius: 10px;
+            background: rgba(174, 74, 110, .2);
+            transition: .3s;
+        }
+
+        .story-progress i.active {
+            width: 38px;
+            background: linear-gradient(90deg, #dc6e93, #b588d9);
+        }
+
+        .page-kicker {
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: .14em;
+            font-size: .61rem;
+            font-weight: 700;
+            color: #b05070;
+            margin: 5px 0 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .page-kicker:before,
+        .page-kicker:after {
+            content: '✦';
+            font-size: .8rem;
+            color: #c38ac8;
+        }
+
+        .welcome-card,
+        .love-note {
+            padding: 18px;
+            text-align: center;
+            line-height: 1.65;
+            font-size: .82rem;
+        }
+
+        .welcome-card {
+            margin-top: 27px;
+            padding: 27px 20px;
+            border-radius: 30px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, .78), rgba(255, 225, 239, .48));
+        }
+
+        .welcome-card span {
+            font-size: 3.2rem;
+            display: block;
+            margin-bottom: 5px;
+            filter: drop-shadow(0 6px 7px rgba(182, 53, 98, .22));
+        }
+
+        .welcome-card p {
+            margin: 0;
+            color: #743f56;
+            font-family: 'Dancing Script', cursive;
+            font-weight: 600;
+            font-size: 1.32rem;
+            line-height: 1.25;
+        }
+
+        .next-page {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            width: 100%;
+            border: 0;
+            border-radius: 18px;
+            padding: 15px;
+            margin: 23px 0 5px;
+            background: linear-gradient(135deg, #d7658a, #aa7fd1);
+            box-shadow: 0 10px 22px rgba(178, 83, 117, .22);
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .next-page span {
+            font-size: 1.25rem;
+        }
+
+        .story-nav {
+            display: grid;
+            grid-template-columns: 1fr 1.45fr;
+            gap: 10px;
+            margin: 21px 0 4px;
+        }
+
+        .back-page {
+            border: 1px solid rgba(255, 255, 255, .75);
+            border-radius: 17px;
+            background: rgba(255, 255, 255, .45);
+            color: #8b435e;
+            font-weight: 600;
+        }
+
+        .story-nav .next-page {
+            margin: 0;
+            padding: 13px;
+        }
+
+        .story-intro {
+            font-size: .77rem;
+            line-height: 1.6;
+            color: #7d4b60;
+            margin: -5px 2px 16px;
+        }
+
+        .photo-grid {
+            gap: 15px;
+        }
+
+        .photo-grid .memory {
+            min-height: 175px;
+            transform: rotate(-1.5deg);
+        }
+
+        .photo-grid .memory:nth-child(even) {
+            transform: rotate(1.5deg);
+        }
+
+        .photo-grid .memory:active {
+            transform: scale(.97) rotate(0);
+        }
+
+        .photo-grid .memory-inner {
+            min-height: 175px;
+        }
+
+        .photo-grid .memory-face {
+            border: 7px solid rgba(255, 255, 255, .83);
+            box-shadow: 0 13px 21px rgba(117, 42, 75, .16);
+            padding: 9px;
+        }
+
+        .photo-grid .memory b {
+            padding: 5px 4px 1px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.14rem;
+            text-align: center;
+        }
+
+        .photo-placeholder {
+            height: 112px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            border: 1.5px dashed rgba(191, 99, 135, .5);
+            background: linear-gradient(135deg, rgba(255, 216, 229, .5), rgba(223, 203, 255, .45));
+            font-size: 1.8rem;
+            color: #c26081;
+            overflow: hidden;
+        }
+
+        .photo-placeholder small {
+            font-family: Poppins, sans-serif;
+            color: #a25d75;
+            margin: 5px 0 0;
+            font-size: .58rem;
+        }
+
+        .image-memory .photo-placeholder {
+            position: relative;
+            display: block;
+            padding: 0;
+            border: 0;
+            background: linear-gradient(135deg, rgba(255, 216, 229, .8), rgba(223, 203, 255, .72));
+        }
+
+        .image-memory .photo-placeholder img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-memory .photo-placeholder small {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: 0;
+            padding: 5px;
+            background: rgba(83, 31, 55, .46);
+            color: #fff;
+            font-size: .57rem;
+        }
+
+        .love-note {
+            margin: 2px 0 18px;
+            padding: 22px 18px;
+            font-family: 'Dancing Script', cursive;
+            font-weight: 600;
+            font-size: 1.32rem;
+            line-height: 1.3;
+            border-radius: 26px;
+            background: linear-gradient(145deg, rgba(255, 251, 244, .82), rgba(245, 218, 246, .62));
+            color: #743f56;
+        }
+
+        .love-note:before,
+        .love-note:after {
+            font-size: 1.5rem;
+            color: #d36d91;
+        }
+
+        .love-note:before {
+            content: '“ ';
+        }
+
+        .love-note:after {
+            content: ' ”';
+        }
+
+        .your-memories-page .story-intro {
+            text-align: center;
+            margin: 0 auto 16px;
+            max-width: 330px;
+        }
+
+        .final-page {
+            text-align: center;
+            padding-top: 19px;
+        }
+
+        .final-page:before {
+            content: '✧';
+            font-size: 5.5rem;
+            top: 9%;
+            left: 4%;
+        }
+
+        .final-page:after {
+            content: '✦';
+            font-size: 5rem;
+            right: 3%;
+            bottom: 12%;
+        }
+
+        .heart-wrap {
+            width: 135px;
+            height: 125px;
+            margin: 10px auto 18px;
+            display: grid;
+            place-items: center;
+            font-size: 8.7rem;
+            line-height: 1;
+            color: #e2628c;
+            text-shadow: 0 12px 22px rgba(193, 60, 104, .28);
+            animation: heartBeat 1.5s ease-in-out infinite;
+            position: relative;
+            background: radial-gradient(circle, rgba(255, 255, 255, .55), transparent 68%);
+        }
+
+        .heart-wrap:before,
+        .heart-wrap:after {
+            content: '✦';
+            position: absolute;
+            font-size: 1.4rem;
+            color: #fff6cb;
+        }
+
+        .heart-wrap:before {
+            top: 10px;
+            left: 2px;
+        }
+
+        .heart-wrap:after {
+            right: 0;
+            bottom: 14px;
+        }
+
+        .final-page h2 {
+            margin: 0 0 14px;
+            font-size: 2.55rem;
+        }
+
+        .final-page .gift {
+            margin-top: 22px;
+            border-radius: 30px;
+        }
+
+        .final-page .gift .box {
+            font-size: 4.5rem;
+        }
+
+        .final-back {
+            padding: 13px 20px;
+            margin-top: 15px;
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            z-index: 10;
+            display: grid;
+            place-items: end center;
+            padding: 18px;
+            background: rgba(74, 27, 52, .45);
+            backdrop-filter: blur(5px);
+            animation: fade .25s ease both;
+        }
+
+        .letter {
+            width: min(100%, 520px);
+            max-height: 82dvh;
+            overflow: auto;
+            border-radius: 30px;
+            padding: 28px 20px calc(25px + env(safe-area-inset-bottom));
+            background: linear-gradient(150deg, #fffdf9, #fff0f2);
+            box-shadow: 0 20px 70px rgba(62, 19, 42, .35);
+            animation: sheet .35s cubic-bezier(.2, .9, .2, 1) both;
+            border: 1px solid rgba(255, 255, 255, .92);
+        }
+
+        .modal-close {
+            float: right;
+            border: 0;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            background: #f9d9e0;
+            color: #a44365;
+        }
+
+        .letter h2 {
+            margin: 12px 0 17px;
+        }
+
+        .letter p {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.35rem;
+            line-height: 1.34;
+            color: #6f3750;
+            margin-bottom: 15px;
+        }
+
+        .letter .sign {
+            font-weight: 700;
+            color: #b14a6b;
+        }
+
+        @keyframes enter {
+            from {
+                opacity: 0;
+                transform: translateY(13px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @keyframes float {
+            50% {
+                transform: translateY(-14px) rotate(9deg);
+            }
+        }
+
+        @keyframes bounce {
+            50% {
+                transform: translateY(-8px) rotate(-4deg);
+            }
+        }
+
+        @keyframes wave {
+            to {
+                height: 20px;
+            }
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0;
+            }
+        }
+
+        @keyframes sheet {
+            from {
+                transform: translateY(80px);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes heartBeat {
+            50% {
+                transform: scale(1.09);
+            }
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+
+            *,
+            *:before,
+            *:after {
+                animation-duration: .01ms !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="app">
+        <div class="orb one"></div>
+        <div class="orb two"></div>
+
+        <section id="celebration" class="screen">
+            <div class="story-progress" aria-label="Celebration pages">
+                <i class="active"></i><i></i><i></i><i></i><i></i>
+            </div>
+
+            <article class="story-page active">
+                <header class="hero">
+                    <div class="hearts" aria-hidden="true">
+                        <span class="heart">💗</span><span class="heart">✨</span><span class="heart">💖</span><span
+                            class="heart">🌸</span>
+                    </div>
+                    <p class="page-kicker">A birthday story for you</p>
+                    <h1>Happy Birthday,<br>Ruksyyy! ✨</h1>
+                    <p class="sub">Today is all about the beautiful, warm-hearted girl who makes ordinary moments feel
+                        like magic.</p>
+                </header>
+                <div class="welcome-card glass">
+                    <span>🌹</span>
+                    <p>One day is not enough to celebrate a heart as lovely as yours. So here is a little world made
+                        only for you.</p>
+                </div>
+                <button class="next-page">Begin our story <span>→</span></button>
+            </article>
+
+            <article class="story-page">
+                <p class="page-kicker">Page two</p>
+                <h2>Our special memories 📸</h2>
+                <p class="story-intro">A few beautiful moments, saved here with love. Tap each picture to reveal its
+                    note.</p>
+                <div class="memory-grid photo-grid" aria-label="Tap a photo card to add a photo or reveal its message">
+                    <button class="memory image-memory" aria-label="Reveal image one memory">
+                        <span class="memory-inner">
+                            <span class="memory-face">
+                                <span class="photo-placeholder"><img src="img1.jpg"
+                                        alt="Our special memory one"><small>img1.jpg</small></span>
+                                <b>Your smile</b>
+                            </span>
+                            <span class="memory-face memory-back">
+                                <span>That smile of yours has a way of making even my hardest days softer and
+                                    brighter.</span>
+                            </span>
+                        </span>
+                    </button>
+                    <button class="memory image-memory" aria-label="Reveal image two memory">
+                        <span class="memory-inner">
+                            <span class="memory-face">
+                                <span class="photo-placeholder"><img src="img2.jpg"
+                                        alt="Our special memory two"><small>img2.jpg</small></span>
+                                <b>Your kindness</b>
+                            </span>
+                            <span class="memory-face memory-back">
+                                <span>You care so deeply in the tiniest ways. It is one of the many reasons you are
+                                    unforgettable.</span>
+                            </span>
+                        </span>
+                    </button>
+                    <button class="memory image-memory" aria-label="Reveal image three memory">
+                        <span class="memory-inner">
+                            <span class="memory-face">
+                                <span class="photo-placeholder"><img src="img3.jpg"
+                                        alt="Our special memory three"><small>img3.jpg</small></span>
+                                <b>Your laugh</b>
+                            </span>
+                            <span class="memory-face memory-back">
+                                <span>Your laugh is the kind of sound I wish I could save in a bottle for every rainy
+                                    day.</span>
+                            </span>
+                        </span>
+                    </button>
+                    <button class="memory image-memory" aria-label="Reveal birthday memory">
+                        <span class="memory-inner">
+                            <span class="memory-face">
+                                <span class="emoji">💖</span><b>Our favorite story</b><small>Tap to open</small>
+                            </span>
+                            <span class="memory-face memory-back">
+                                <span>Every memory with you is a favorite one. This is only the beginning of our
+                                    beautiful story.</span>
+                            </span>
+                        </span>
+                    </button>
+                </div>
+                <div class="story-nav">
+                    <button class="back-page">← Back</button>
+                    <button class="next-page">Next page →</button>
+                </div>
+            </article>
+
+            <article class="story-page">
+                <p class="page-kicker">Page three</p>
+                <h2>Reasons & wishes 💌</h2>
+                <p class="love-note glass">Ruksyyy, you make life feel softer, brighter, and more beautiful just by
+                    being in it. I hope every dream you carry finds its way to you, and every new day reminds you how
+                    deeply special you are.</p>
+                <div class="accordion">
+                    <div class="reason">
+                        <button aria-expanded="false">1. You are beautifully, completely you <span>＋</span></button>
+                        <p>Your spark, your softness, and your wonderfully unique way of seeing the world make you
+                            impossible not to adore.</p>
+                    </div>
+                    <div class="reason">
+                        <button aria-expanded="false">2. You make life feel lighter <span>＋</span></button>
+                        <p>Even a simple conversation with you can turn a normal day into one worth smiling about.</p>
+                    </div>
+                    <div class="reason">
+                        <button aria-expanded="false">3. Your heart is gold <span>＋</span></button>
+                        <p>You have a kindness that shows up quietly, and it makes everyone around you feel more cared
+                            for.</p>
+                    </div>
+                    <div class="reason">
+                        <button aria-expanded="false">4. You inspire me <span>＋</span></button>
+                        <p>Your courage to keep growing, learning, and dreaming reminds me to believe in beautiful
+                            things too.</p>
+                    </div>
+                    <div class="reason">
+                        <button aria-expanded="false">5. You are my favorite person <span>＋</span></button>
+                        <p>There is simply no one else like you, Ruksyyy—and I am endlessly grateful that you are in my
+                            life.</p>
+                    </div>
+                </div>
+                <div class="story-nav">
+                    <button class="back-page">← Back</button>
+                    <button class="next-page">A small scrapbook →</button>
+                </div>
+            </article>
+
+            <article class="story-page your-memories-page">
+                <p class="page-kicker">Just for Ruksyyy</p>
+                <h2>Your special memories ✨</h2>
+                <p class="story-intro">Your favorite photos are already part of this little world—just tap each card.
+                </p>
+                <div class="memory-grid special-grid" aria-label="Tap a special memory card to reveal its note">
+                    <button class="memory image-memory" aria-label="Reveal special photo one">
+                        <span class="memory-inner">
+                            <span class="memory-face">
+                                <span class="photo-placeholder"><img src="img1.jpg"
+                                        alt="Ruksyyy special photo one"><small>img1.jpg</small></span>
+                                <b>Your pretty smile</b>
+                            </span>
+                            <span class="memory-face memory-back">
+                                <span>Every time you smile, it feels like the whole world gets a little more
+                                    beautiful.</span>
+                            </span>
+                        </span>
+                    </button>
+                    <button class="memory image-memory" aria-label="Reveal special photo two">
+                        <span class="memory-inner">
+                            <span class="memory-face">
+                                <span class="photo-placeholder"><img src="img2.jpg"
+                                        alt="Ruksyyy special photo two"><small>img2.jpg</small></span>
+                                <b>Your sweet soul</b>
+                            </span>
+                            <span class="memory-face memory-back">
+                                <span>You are gentle, kind, and completely special in the loveliest possible way.</span>
+                            </span>
+                        </span>
+                    </button>
+                    <button class="memory image-memory" aria-label="Reveal special photo three">
+                        <span class="memory-inner">
+                            <span class="memory-face">
+                                <span class="photo-placeholder"><img src="img3.jpg"
+                                        alt="Ruksyyy special photo three"><small>img3.jpg</small></span>
+                                <b>Your cute moments</b>
+                            </span>
+                            <span class="memory-face memory-back">
+                                <span>The smallest things you do become my favorite little memories without even
+                                    trying.</span>
+                            </span>
+                        </span>
+                    </button>
+                    <button class="memory" aria-label="Reveal special photo four">
+                        <span class="memory-inner">
+                            <span class="memory-face">
+                                <span class="emoji">💫</span><b>Your bright future</b><small>Tap to open</small>
+                            </span>
+                            <span class="memory-face memory-back">
+                                <span>You are going to do beautiful things, Ruksyyy. I will always be proud of
+                                    you.</span>
+                            </span>
+                        </span>
+                    </button>
+                </div>
+                <div class="story-nav">
+                    <button class="back-page">← Back</button>
+                    <button class="next-page">The final page →</button>
+                </div>
+            </article>
+
+            <article class="story-page final-page">
+                <p class="page-kicker">The last page</p>
+                <div class="heart-wrap" aria-hidden="true">♥</div>
+                <h2>All my love,<br>for you</h2>
+                <p class="story-intro">May this birthday be the start of your happiest, brightest, most magical year
+                    yet.</p>
+                <section class="gift glass">
+                    <span class="box" aria-hidden="true">🎁</span>
+                    <h2>Your birthday letter</h2>
+                    <p>One little box, holding a very big feeling.</p>
+                    <button id="openGift" class="gift-button">Open my heart 💌</button>
+                </section>
+                <button class="back-page final-back">← Read again</button>
+            </article>
+        </section>
+
+        <div id="player" class="player">
+            <button id="musicToggle" class="music-toggle" aria-label="Play romantic music">▶</button>
+            <div class="track">
+                <b>For Ruksyyy</b>
+                <span>A small melody from my heart</span>
+            </div>
+            <div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+    </main>
+
+    <div id="giftModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="letterTitle">
+        <article class="letter">
+            <button id="closeGift" class="modal-close" aria-label="Close letter">×</button>
+            <h2 id="letterTitle">My dearest Ruksyyy,</h2>
+            <p>Happy Birthday, my beautiful Ruksana. Today is a celebration of the sweetest soul I know, and I hope
+                every moment reminds you how loved you truly are. Your smile brings warmth to ordinary days, your
+                laughter makes everything feel lighter, and your kind heart leaves a little goodness everywhere you go.
+            </p>
+            <p>I feel lucky to know the real you: your silly side, your quiet strength, your big dreams, and the gentle
+                way you care for people. Please never doubt your magic, Ruksyyy. You have a beautiful light that cannot
+                be copied. This new year of your life should be full of brave dreams, peaceful mornings, unexpected
+                adventures, and countless reasons to smile. I hope you trust yourself, celebrate every little win, and
+                always remember that you deserve soft love and wonderful things.</p>
+            <p>I will always be cheering for you through every step, every hope, and every new beginning. Happy
+                birthday, my favorite girl. Keep growing, glowing, laughing, and being wonderfully yourself. Thank you
+                for making life sweeter just by being in it. I am grateful for you today, tomorrow, and always. May your
+                heart stay full, your dreams stay brave, and your days feel as beautiful as you are, forever.</p>
+            <p class="sign">With all my love, always 💖</p>
+        </article>
+    </div>
+
+    <script>
+        let audioContext, oscillator, gainNode, musicOn = false;
+
+        function burst() {
+            if (!window.confetti) return;
+            const end = Date.now() + 1100;
+            (function fire() {
+                confetti({ particleCount: 8, angle: 60, spread: 58, origin: { x: 0 }, colors: ['#f58aac', '#c9b3ee', '#ffe49a', '#ffffff'] });
+                confetti({ particleCount: 8, angle: 120, spread: 58, origin: { x: 1 }, colors: ['#f58aac', '#c9b3ee', '#ffe49a', '#ffffff'] });
+                if (Date.now() < end) requestAnimationFrame(fire);
+            })();
+        }
+
+        // Auto confetti burst when entering the page
+        window.addEventListener('load', burst);
+
+        let currentPage = 0;
+        const pages = [...document.querySelectorAll('.story-page')],
+            progress = [...document.querySelectorAll('.story-progress i')];
+
+        function showPage(index) {
+            currentPage = Math.max(0, Math.min(index, pages.length - 1));
+            pages.forEach((page, i) => page.classList.toggle('active', i === currentPage));
+            progress.forEach((dot, i) => dot.classList.toggle('active', i === currentPage));
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.querySelectorAll('.next-page').forEach(button => button.addEventListener('click', () => showPage(currentPage + 1)));
+        document.querySelectorAll('.back-page').forEach(button => button.addEventListener('click', () => showPage(currentPage - 1)));
+
+        document.querySelectorAll('.memory:not(.photo-memory)').forEach(card => card.addEventListener('click', () => card.classList.toggle('flipped')));
+
+        document.querySelectorAll('.reason button').forEach(button => button.addEventListener('click', () => {
+            const parent = button.parentElement;
+            parent.classList.toggle('open');
+            button.setAttribute('aria-expanded', parent.classList.contains('open'));
+        }));
+
+        const modal = document.getElementById('giftModal');
+        document.getElementById('openGift').onclick = () => { modal.classList.remove('hidden'); burst(); };
+        document.getElementById('closeGift').onclick = () => modal.classList.add('hidden');
+        modal.addEventListener('click', e => { if (e.target === modal) modal.classList.add('hidden') });
+
+        function startMusic() {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            oscillator = audioContext.createOscillator();
+            gainNode = audioContext.createGain();
+            oscillator.type = 'sine';
+            oscillator.frequency.value = 220;
+            gainNode.gain.value = .025;
+            oscillator.connect(gainNode).connect(audioContext.destination);
+            oscillator.start();
+            const notes = [220, 261.63, 329.63, 293.66, 261.63, 220];
+            let i = 0;
+            window.musicTimer = setInterval(() => {
+                oscillator.frequency.setTargetAtTime(notes[i++ % notes.length], audioContext.currentTime, .08)
+            }, 520);
+        }
+
+        const player = document.getElementById('player');
+        document.getElementById('musicToggle').onclick = function () {
+            musicOn = !musicOn;
+            if (musicOn) {
+                startMusic();
+                this.textContent = '❚❚';
+                this.setAttribute('aria-label', 'Pause romantic music');
+                player.classList.add('playing');
+            } else {
+                clearInterval(window.musicTimer);
+                oscillator.stop();
+                audioContext.close();
+                this.textContent = '▶';
+                this.setAttribute('aria-label', 'Play romantic music');
+                player.classList.remove('playing');
+            }
+        };
+    </script>
+</body>
+
+</html>
